@@ -116,7 +116,6 @@ else
 endif
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('neoclide/coc.nvim', {'build': 'coc#util#install()'})
-call dein#add('prettier/vim-prettier', {'build': 'npm install'})
 call dein#add('tpope/vim-fugitive')
 call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
 				\ 'build': 'sh -c "cd app && yarn install"' })
@@ -128,6 +127,9 @@ call dein#add('vim-airline/vim-airline-themes')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('APZelos/blamer.nvim')
 call dein#add('github/copilot.vim')
+call dein#add('nvim-lua/plenary.nvim')
+call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.1.1' })
+call dein#add('nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' })
 
 " cocのコードジャンプ系のキーバインド設定
 " Use `[g` and `]g` to navigate diagnostics
@@ -290,11 +292,6 @@ endfunction
 " initialize the colorscheme for the first run
 call ChangeBackground()
 
-" vim-prettier
-" https://github.com/prettier/vim-prettier/issues/191#issuecomment-614280489
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
-
 " Silent `redrawtime exceeded`
 " https://dev.to/ronenlaufer/comment/1d702
 set re=0
@@ -316,10 +313,21 @@ let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowTo
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 " term color : https://h2plus.biz/hiromitsu/entry/674
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=23
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=31
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=236
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=238
+function! ChangeIndentColor()
+  if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=236
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=238
+  else
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=7
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=247
+  endif
+endfunction
+" initialize the colorscheme for the first run
+call ChangeIndentColor()
+
+" coc-prettier
+" enabled after executing CocInstall coc-prettier
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
@@ -334,3 +342,9 @@ imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
 imap <silent> <C-j> <Plug>(copilot-next)
 imap <silent> <C-k> <Plug>(copilot-previous)
+
+" telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
