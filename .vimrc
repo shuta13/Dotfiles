@@ -63,6 +63,12 @@ set clipboard+=unnamed
 " 起動画面を出さない
 set shortmess+=I
 
+" undoの永続化
+if has('persistent_undo')
+  set undodir=~/.vim/undo
+  set undofile
+endif
+
 " vimgrepのignore
 " @see https://vi.stackexchange.com/questions/18899/exclude-folder-when-searching-files-in-working-directory
 set wildignore=*/node_modules/*
@@ -130,6 +136,7 @@ call dein#add('github/copilot.vim')
 call dein#add('nvim-lua/plenary.nvim')
 call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.1.1' })
 call dein#add('nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' })
+call dein#add('prettier/vim-prettier', {'build': 'npm install'})
 
 " cocのコードジャンプ系のキーバインド設定
 " Use `[g` and `]g` to navigate diagnostics
@@ -328,6 +335,20 @@ call ChangeIndentColor()
 " coc-prettier
 " enabled after executing CocInstall coc-prettier
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+
+" vim-prettier
+" https://github.com/prettier/vim-prettier/issues/191#issuecomment-614280489
+" let g:prettier#autoformat = 1
+" let g:prettier#autoformat_require_pragma = 0
+" let g:prettier#autoformat_configurations = {
+"       \ 'markdown': { 'parser': 'markdown' },
+"       \ }
+" autocmd BufWritePre *.md PrettierAsync
+
+" coc-eslint: formatters save integration
+autocmd BufWritePre *.js* call CocAction('runCommand', 'eslint.executeAutofix')
+autocmd BufWritePre *.ts* call CocAction('runCommand', 'eslint.executeAutofix')
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
@@ -344,7 +365,12 @@ imap <silent> <C-j> <Plug>(copilot-next)
 imap <silent> <C-k> <Plug>(copilot-previous)
 
 " telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>ff <cmd>Telescope find_files hidden=true<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" buffer操作向けkeymap
+nnoremap <silent> <C-h> :bprev<CR>
+nnoremap <silent> <C-l> :bnext<CR>
+nnoremap <silent> <C-d> :bd<CR>
