@@ -136,7 +136,7 @@ call dein#add('github/copilot.vim')
 call dein#add('nvim-lua/plenary.nvim')
 call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.1.1' })
 call dein#add('nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' })
-call dein#add('prettier/vim-prettier', {'build': 'npm install'})
+" call dein#add('prettier/vim-prettier', {'build': 'npm install'})
 
 " cocのコードジャンプ系のキーバインド設定
 " Use `[g` and `]g` to navigate diagnostics
@@ -336,6 +336,11 @@ call ChangeIndentColor()
 " enabled after executing CocInstall coc-prettier
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+autocmd BufWritePre *.*js* call CocAction('runCommand', 'prettier.formatFile')
+autocmd BufWritePre *.*ts* call CocAction('runCommand', 'prettier.formatFile')
+autocmd BufWritePre *.html call CocAction('runCommand', 'prettier.formatFile')
+autocmd BufWritePre *.md call CocAction('runCommand', 'prettier.formatFile')
+" nmap <silent> <C-p> <Plug>Prettier
 
 " vim-prettier
 " https://github.com/prettier/vim-prettier/issues/191#issuecomment-614280489
@@ -347,8 +352,10 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 " autocmd BufWritePre *.md PrettierAsync
 
 " coc-eslint: formatters save integration
-autocmd BufWritePre *.js* call CocAction('runCommand', 'eslint.executeAutofix')
-autocmd BufWritePre *.ts* call CocAction('runCommand', 'eslint.executeAutofix')
+autocmd BufWritePre *.*js* call CocAction('runCommand', 'eslint.executeAutofix')
+autocmd BufWritePre *.*ts* call CocAction('runCommand', 'eslint.executeAutofix')
+autocmd BufWritePre *.vue call CocAction('runCommand', 'eslint.executeAutofix')
+autocmd BufWritePre *.astro call CocAction('runCommand', 'eslint.executeAutofix')
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
