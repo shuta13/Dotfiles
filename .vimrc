@@ -340,6 +340,8 @@ autocmd BufWritePre *.*js* call CocAction('runCommand', 'prettier.formatFile')
 autocmd BufWritePre *.*ts* call CocAction('runCommand', 'prettier.formatFile')
 autocmd BufWritePre *.html call CocAction('runCommand', 'prettier.formatFile')
 autocmd BufWritePre *.md call CocAction('runCommand', 'prettier.formatFile')
+autocmd BufWritePre *.*css call CocAction('runCommand', 'prettier.formatFile')
+autocmd BufWritePre *.astro call CocAction('runCommand', 'prettier.formatFile')
 " nmap <silent> <C-p> <Plug>Prettier
 
 " vim-prettier

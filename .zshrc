@@ -42,12 +42,15 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 # istioctl
 export PATH=$HOME/.istioctl/bin:$PATH
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
-
 # go
 export PATH=$HOME/goroot/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
+
+# cycloud
+export PATH=$HOME/.config/cycloud/bin:$PATH
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/s13189/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s13189/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/s13189/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s13189/google-cloud-sdk/completion.zsh.inc'; fi
