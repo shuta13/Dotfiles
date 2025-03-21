@@ -134,7 +134,7 @@ call dein#add('airblade/vim-gitgutter')
 call dein#add('APZelos/blamer.nvim')
 call dein#add('github/copilot.vim')
 call dein#add('nvim-lua/plenary.nvim')
-call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.1.1' })
+call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.1.4' })
 call dein#add('nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' })
 " call dein#add('prettier/vim-prettier', {'build': 'npm install'})
 
