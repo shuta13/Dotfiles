@@ -54,3 +54,13 @@ if [ -f '/Users/s13189/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s13189/g
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/s13189/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s13189/google-cloud-sdk/completion.zsh.inc'; fi
+
+# asdf
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# append completions to fpath
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
+# github
+export GITHUB_TOKEN=`gh auth token`
