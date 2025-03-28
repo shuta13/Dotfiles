@@ -1,5 +1,5 @@
 #!/bin/bash
 
-bash ./link.sh
-bash ./zsh.sh
-bash ./screenshot.sh
+bash ./setup-dotfiles-symlink.sh
+bash ./setup-zsh.sh
+bash ./setup-screenshot.sh

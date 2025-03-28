@@ -49,12 +49,6 @@ export PATH=$HOME/go/bin:$PATH
 # cycloud
 export PATH=$HOME/.config/cycloud/bin:$PATH
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/s13189/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s13189/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/s13189/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s13189/google-cloud-sdk/completion.zsh.inc'; fi
-
 # asdf
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 # append completions to fpath
@@ -64,3 +58,9 @@ autoload -Uz compinit && compinit
 
 # github
 export GITHUB_TOKEN=`gh auth token`
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/s13189/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s13189/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/s13189/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s13189/google-cloud-sdk/completion.zsh.inc'; fi

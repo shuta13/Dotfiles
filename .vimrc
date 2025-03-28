@@ -4,7 +4,9 @@ set fenc=utf-8
 
 set enc=utf-8
 
-language en_US
+" language en_US
+" ↑だと絵文字や漢字のコピーができない
+lang en_US.UTF-8
 
 set number
 
@@ -134,9 +136,10 @@ call dein#add('airblade/vim-gitgutter')
 call dein#add('APZelos/blamer.nvim')
 call dein#add('github/copilot.vim')
 call dein#add('nvim-lua/plenary.nvim')
-call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.1.4' })
+call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.1.8' })
 call dein#add('nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' })
 " call dein#add('prettier/vim-prettier', {'build': 'npm install'})
+call dein#add('sbdchd/neoformat')
 
 " cocのコードジャンプ系のキーバインド設定
 " Use `[g` and `]g` to navigate diagnostics
@@ -333,16 +336,16 @@ endfunction
 call ChangeIndentColor()
 
 " coc-prettier
-" enabled after executing CocInstall coc-prettier
-command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
-autocmd BufWritePre *.*js* call CocAction('runCommand', 'prettier.formatFile')
-autocmd BufWritePre *.*ts* call CocAction('runCommand', 'prettier.formatFile')
-autocmd BufWritePre *.html call CocAction('runCommand', 'prettier.formatFile')
-autocmd BufWritePre *.md call CocAction('runCommand', 'prettier.formatFile')
-autocmd BufWritePre *.*css call CocAction('runCommand', 'prettier.formatFile')
-autocmd BufWritePre *.astro call CocAction('runCommand', 'prettier.formatFile')
-" nmap <silent> <C-p> <Plug>Prettier
+" " enabled after executing CocInstall coc-prettier
+" command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+" command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+" autocmd BufWritePre *.*js* call CocAction('runCommand', 'prettier.formatFile')
+" autocmd BufWritePre *.*ts* call CocAction('runCommand', 'prettier.formatFile')
+" autocmd BufWritePre *.html call CocAction('runCommand', 'prettier.formatFile')
+" autocmd BufWritePre *.md call CocAction('runCommand', 'prettier.formatFile')
+" autocmd BufWritePre *.*css call CocAction('runCommand', 'prettier.formatFile')
+" autocmd BufWritePre *.astro call CocAction('runCommand', 'prettier.formatFile')
+" " nmap <silent> <C-p> <Plug>Prettier
 
 " vim-prettier
 " https://github.com/prettier/vim-prettier/issues/191#issuecomment-614280489
@@ -352,6 +355,15 @@ autocmd BufWritePre *.astro call CocAction('runCommand', 'prettier.formatFile')
 "       \ 'markdown': { 'parser': 'markdown' },
 "       \ }
 " autocmd BufWritePre *.md PrettierAsync
+
+" neoformat
+let g:neoformat_try_node_exe = 1
+autocmd BufWritePre *.*js* Neoformat
+autocmd BufWritePre *.*ts* Neoformat
+autocmd BufWritePre *.html Neoformat
+autocmd BufWritePre *.md Neoformat
+autocmd BufWritePre *.*css Neoformat
+autocmd BufWritePre *.astro Neoformat
 
 " coc-eslint: formatters save integration
 autocmd BufWritePre *.*js* call CocAction('runCommand', 'eslint.executeAutofix')
