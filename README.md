@@ -2,4 +2,8 @@
 
 ## Setup
 
-Exec `./scripts/setup.sh`
+```
+cd scripts/
+
+./setup.sh
+```

@@ -126,7 +126,7 @@ call dein#add('jiangmiao/auto-pairs')
 call dein#add('neoclide/coc.nvim', {'build': 'coc#util#install()'})
 call dein#add('tpope/vim-fugitive')
 call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
-				\ 'build': 'sh -c "cd app && yarn install"' })
+					\ 'build': 'sh -c "cd app && npx --yes yarn install"' })
 call dein#add('christoomey/vim-conflicted')
 call dein#add('luochen1990/rainbow')
 call dein#add('nathanaelkane/vim-indent-guides')

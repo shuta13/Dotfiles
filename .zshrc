@@ -64,3 +64,4 @@ if [ -f '/Users/s13189/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s13189/g
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/s13189/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s13189/google-cloud-sdk/completion.zsh.inc'; fi
+eval "$(mise activate zsh)"
