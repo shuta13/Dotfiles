@@ -406,3 +406,6 @@ function! s:FernRevealHere() abort
   endtry
 endfunction
 nnoremap <silent> <leader>fn :call <SID>FernRevealHere()<CR>
+
+" 開いているファイルのパスを\cpでコピーする
+nnoremap <leader>cp :let @+ = expand('%:p')<CR>
