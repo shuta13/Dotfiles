@@ -45,6 +45,8 @@ export PATH=$HOME/.istioctl/bin:$PATH
 # go
 export PATH=$HOME/goroot/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
+# asdf 用
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # cycloud
 export PATH=$HOME/.config/cycloud/bin:$PATH
