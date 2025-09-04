@@ -358,12 +358,12 @@ call ChangeIndentColor()
 
 " neoformat
 let g:neoformat_try_node_exe = 1
-autocmd BufWritePre *.*js* Neoformat
-autocmd BufWritePre *.*ts* Neoformat
-autocmd BufWritePre *.html Neoformat
-autocmd BufWritePre *.md Neoformat
-autocmd BufWritePre *.*css Neoformat
-autocmd BufWritePre *.astro Neoformat
+autocmd BufWritePre silent! *.*js* Neoformat
+autocmd BufWritePre silent! *.*ts* Neoformat
+autocmd BufWritePre silent! *.html Neoformat
+autocmd BufWritePre silent! *.md Neoformat
+autocmd BufWritePre silent! *.*css Neoformat
+autocmd BufWritePre silent! *.astro Neoformat
 
 " coc-eslint: formatters save integration
 autocmd BufWritePre *.*js* call CocAction('runCommand', 'eslint.executeAutofix')
@@ -395,3 +395,14 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <silent> <C-h> :bprev<CR>
 nnoremap <silent> <C-l> :bnext<CR>
 nnoremap <silent> <C-d> :bd<CR>
+
+" いま開いているファイルをfernに反映する。\fnで実行
+function! s:FernRevealHere() abort
+  let rel = fnamemodify(expand('%'), ':.')
+  try
+    execute 'FernDo -stay FernReveal ' . fnameescape(rel)
+  catch
+    execute 'Fern . -drawer -reveal=%'
+  endtry
+endfunction
+nnoremap <silent> <leader>fn :call <SID>FernRevealHere()<CR>
