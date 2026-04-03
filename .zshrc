@@ -51,12 +51,12 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # cycloud
 export PATH=$HOME/.config/cycloud/bin:$PATH
 
-# asdf
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-# append completions to fpath
-fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
-# initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
+# # asdf
+# export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# # append completions to fpath
+# fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+# # initialise completions with ZSH's compinit
+# autoload -Uz compinit && compinit
 
 # github
 export GITHUB_TOKEN=`gh auth token`
@@ -66,4 +66,12 @@ if [ -f '/Users/s13189/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s13189/g
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/s13189/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s13189/google-cloud-sdk/completion.zsh.inc'; fi
+
+# mise
 eval "$(mise activate zsh)"
+
+# openjdk
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+# claude code
+export PATH="$HOME/.local/bin:$PATH"
