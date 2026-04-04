@@ -1,6 +1,6 @@
 ---
 name: zenn-cycloud-article-writer
-description: cycloud_blog向けにZenn記事を作成・推敲・公開する専用スキル。Zenn公式Markdown記法を確認し、Think IT連載（https://thinkit.co.jp/corner/11870）の言葉遣い・語り口を参考に執筆し、Zenn CLIでプレビュー確認から公開準備まで進める。
+description: cycloud_blog向けにZenn記事を作成・推敲・公開する専用スキル。Zenn公式Markdown記法を確認し、Think IT連載の言葉遣い・語り口を参考に執筆し、Zenn CLIでプレビュー確認から公開準備まで進める。
 ---
 
 # Zenn記事作成スキル
@@ -9,7 +9,7 @@ Zenn向けの技術記事を、執筆から公開準備まで一気通貫で行�
 このスキルは以下を必須要件として扱う。
 
 - Zenn公式Markdown記法を確認して使う
-- Think IT連載（https://thinkit.co.jp/corner/11870）の言葉遣い・語り口を参考に書く
+- Think IT連載の言葉遣い・語り口を参考に書く
 - Zenn CLIでプレビュー確認し、公開手順まで実施する
 - 投稿先Publicationは `cycloud_blog` を使う
 
@@ -22,7 +22,11 @@ Zenn向けの技術記事を、執筆から公開準備まで一気通貫で行�
 - Publication運用（`publication_name`）: https://zenn.dev/zenn/articles/how-to-use-publication
 - 文体参照: https://thinkit.co.jp/corner/11870
 
-仕様変更があり得るため、記法・CLIオプション・公開フローは上記を優先する。
+仕様変更があり得るため、記法・CLIオプション・公開フローは一次情報を優先する。
+
+注意:
+- 上記4リンクは執筆ルール確認用であり、記事末尾の参照リンクには含めない
+- 記事末尾の参照リンクには、記事テーマ・実装内容に直接関係する一次情報のみを記載する
 
 ## 1. 文体ルール（Think IT連載の語り口を参照）
 
@@ -97,7 +101,7 @@ publication_name: "cycloud_blog"
 2. 構成（h2/h3）を作る
 3. Think ITの言葉遣い・語り口を参考に本文初稿を書く
 4. Zenn記法（message/details/diff/mermaid）を適用する
-5. 事実確認を行い、参照URLを本文末尾にまとめる
+5. 事実確認を行い、参照URLを本文末尾にまとめる（記事内容に直接関係する資料のみ。記法・CLI・Publication運用・文体参照のガイドは載せない）
 
 ## 5. Zenn CLIワークフロー
 
@@ -146,4 +150,5 @@ npx zenn preview
 - [ ] Front Matterに `publication_name: "cycloud_blog"` がある
 - [ ] `npx zenn preview` で崩れがない
 - [ ] 公開条件（`published` / `published_at`）を意図通り設定した
+- [ ] 記事末尾の参照リンクは記事内容に関連するものだけで、記法・CLI・Publication運用・文体参照ガイドを含めていない
 - [ ] 公開後の確認先が `https://zenn.dev/dashboard/publications/cycloud_blog` になっている
