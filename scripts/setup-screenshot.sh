@@ -1,5 +1,7 @@
 #!/bin/bash
 
-mkdir ~/Pictures/ScreenShots
+set -euo pipefail
 
-defaults write com.apple.screencapture location ~/Pictures/ScreenShots/
+mkdir -p "$HOME/Pictures/ScreenShots"
+
+defaults write com.apple.screencapture location "$HOME/Pictures/ScreenShots/"
