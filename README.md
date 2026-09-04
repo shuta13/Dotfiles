@@ -8,8 +8,6 @@ cd scripts/
 ./setup.sh
 ```
 
-セットアップ時に Homebrew の `go` / `gh` / `mise` / `neovim` と、mise で管理する Node.js LTS がインストールされます。
-
 ## Misc
 
 - Homebrew は1番安全な方法でいれる
