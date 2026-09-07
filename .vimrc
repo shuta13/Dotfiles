@@ -124,6 +124,14 @@ else
 endif
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('neoclide/coc.nvim', {'build': 'coc#util#install()'})
+
+" coc.nvim extensions（初回起動時に不足分を自動インストール）
+let g:coc_global_extensions = [
+      \ 'coc-json',
+      \ 'coc-tsserver',
+      \ 'coc-eslint',
+      \ ]
+
 call dein#add('tpope/vim-fugitive')
 call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
 					\ 'build': 'sh -c "cd app && npx --yes yarn install"' })
@@ -136,7 +144,8 @@ call dein#add('airblade/vim-gitgutter')
 call dein#add('APZelos/blamer.nvim')
 call dein#add('github/copilot.vim')
 call dein#add('nvim-lua/plenary.nvim')
-call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.1.8' })
+call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.2.1' })
+" Telescope 0.2.1 は nvim-treesitter の旧 API に依存しないため main を使用する。
 call dein#add('nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' })
 " call dein#add('prettier/vim-prettier', {'build': 'npm install'})
 call dein#add('sbdchd/neoformat')

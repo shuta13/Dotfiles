@@ -19,10 +19,12 @@ fi
 
 eval "$("$BREW" shellenv)"
 
-for package in go gh mise neovim; do
+for package in go gh mise neovim ripgrep fd; do
   command_name="$package"
   if [ "$package" = neovim ]; then
     command_name=nvim
+  elif [ "$package" = ripgrep ]; then
+    command_name=rg
   fi
 
   if ! command -v "$command_name" >/dev/null 2>&1; then
@@ -34,6 +36,7 @@ done
 # リポジトリで宣言した mise 管理ツールをすべてインストールする。
 mise -C "$SCRIPT_DIR/.." install
 
+bash "$SCRIPT_DIR/setup-git.sh"
 bash "$SCRIPT_DIR/setup-dotfiles-symlink.sh"
 bash "$SCRIPT_DIR/setup-zsh.sh"
 bash "$SCRIPT_DIR/setup-screenshot.sh"
