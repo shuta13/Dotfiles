@@ -40,3 +40,6 @@ bash "$SCRIPT_DIR/setup-git.sh"
 bash "$SCRIPT_DIR/setup-dotfiles-symlink.sh"
 bash "$SCRIPT_DIR/setup-zsh.sh"
 bash "$SCRIPT_DIR/setup-screenshot.sh"
+
+# Finder で隠しファイルを表示する。
+defaults write com.apple.finder AppleShowAllFiles -bool true
